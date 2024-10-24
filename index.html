@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canadian Currency Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, input {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            width: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canadian Currency Calculator</h1>
+    <div class="container">
+        <form id="currency-form">
+            <label for="pennies">Pennies (1¢):</label>
+            <input type="number" id="pennies" min="0" value="0"><br>
+
+            <label for="nickels">Nickels (5¢):</label>
+            <input type="number" id="nickels" min="0" value="0"><br>
+
+            <label for="dimes">Dimes (10¢):</label>
+            <input type="number" id="dimes" min="0" value="0"><br>
+
+            <label for="quarters">Quarters (25¢):</label>
+            <input type="number" id="quarters" min="0" value="0"><br>
+
+            <label for="loonies">Loonies ($1):</label>
+            <input type="number" id="loonies" min="0" value="0"><br>
+
+            <label for="toonies">Toonies ($2):</label>
+            <input type="number" id="toonies" min="0" value="0"><br>
+
+            <label for="fives">Bills ($5):</label>
+            <input type="number" id="fives" min="0" value="0"><br>
+
+            <label for="tens">Bills ($10):</label>
+            <input type="number" id="tens" min="0" value="0"><br>
+
+            <label for="twenties">Bills ($20):</label>
+            <input type="number" id="twenties" min="0" value="0"><br>
+
+            <label for="fifties">Bills ($50):</label>
+            <input type="number" id="fifties" min="0" value="0"><br>
+
+            <label for="hundreds">Bills ($100):</label>
+            <input type="number" id="hundreds" min="0" value="0"><br>
+
+            <button type="button" onclick="calculateTotal()">Calculate Total</button>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            // Get the values from the inputs
+            let pennies = parseInt(document.getElementById('pennies').value) || 0;
+            let nickels = parseInt(document.getElementById('nickels').value) || 0;
+            let dimes = parseInt(document.getElementById('dimes').value) || 0;
+            let quarters = parseInt(document.getElementById('quarters').value) || 0;
+            let loonies = parseInt(document.getElementById('loonies').value) || 0;
+            let toonies = parseInt(document.getElementById('toonies').value) || 0;
+            let fives = parseInt(document.getElementById('fives').value) || 0;
+            let tens = parseInt(document.getElementById('tens').value) || 0;
+            let twenties = parseInt(document.getElementById('twenties').value) || 0;
+            let fifties = parseInt(document.getElementById('fifties').value) || 0;
+            let hundreds = parseInt(document.getElementById('hundreds').value) || 0;
+
+            // Calculate the total amount
+            let total = (pennies * 0.01) + (nickels * 0.05) + (dimes * 0.10) +
+                        (quarters * 0.25) + (loonies * 1.00) + (toonies * 2.00) +
+                        (fives * 5.00) + (tens * 10.00) + (twenties * 20.00) +
+                        (fifties * 50.00) + (hundreds * 100.00);
+
+            // Display the result
+            document.getElementById('result').innerHTML = "Total: $" + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
