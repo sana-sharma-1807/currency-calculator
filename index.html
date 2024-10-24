@@ -26,32 +26,23 @@
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .form-row {
+        label {
             font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            align-items: center;
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
             color: #E0E0E0;
         }
 
-        .form-row label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
         input[type="number"] {
-            width: 50px;
+            width: 80px;
             padding: 10px;
-            font-size: 16px;
+            font-size: 18px;
             color: #fff;
             background-color: #4F4F4F;
             border: none;
             border-radius: 5px;
             text-align: center;
-            margin-left: 10px;
         }
 
         button {
@@ -78,6 +69,12 @@
             border-radius: 5px;
         }
 
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -91,42 +88,49 @@
     <div class="container">
         <form id="currency-form">
             <div class="form-row">
-                <label>($5 [<input type="number" id="fives" min="0" value="0">])</label>
+                <label for="nickels">(5¢)</label>
+                <input type="number" id="nickels" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>($10 [<input type="number" id="tens" min="0" value="0">])</label>
+                <label for="dimes">(10¢)</label>
+                <input type="number" id="dimes" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>($20 [<input type="number" id="twenties" min="0" value="0">])</label>
+                <label for="quarters">(25¢)</label>
+                <input type="number" id="quarters" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>($50 [<input type="number" id="fifties" min="0" value="0">])</label>
+                <label for="loonies">($1)</label>
+                <input type="number" id="loonies" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>($1 [<input type="number" id="loonies" min="0" value="0">])</label>
+                <label for="toonies">($2)</label>
+                <input type="number" id="toonies" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>($2 [<input type="number" id="toonies" min="0" value="0">])</label>
+                <label for="fives">($5)</label>
+                <input type="number" id="fives" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>(25¢ [<input type="number" id="quarters" min="0" value="0">])</label>
+                <label for="tens">($10)</label>
+                <input type="number" id="tens" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>(10¢ [<input type="number" id="dimes" min="0" value="0">])</label>
+                <label for="twenties">($20)</label>
+                <input type="number" id="twenties" min="0" value="0">
             </div>
             <div class="form-row">
-                <label>(5¢ [<input type="number" id="nickels" min="0" value="0">])</label>
+                <label for="fifties">($50)</label>
+                <input type="number" id="fifties" min="0" value="0">
             </div>
-
             <button type="button" onclick="calculateTotal()">Calculate Total</button>
+            <div class="result" id="result">Total: $0.00</div>
         </form>
 
-        <div class="result" id="result"></div>
+        <footer>
+            Made by Sana Sharma
+        </footer>
     </div>
-
-    <footer>
-        Made by Sana Sharma
-    </footer>
 
     <script>
         function calculateTotal() {
@@ -141,9 +145,8 @@
             let fifties = parseInt(document.getElementById('fifties').value) || 0;
 
             let total = (nickels * 0.05) + (dimes * 0.10) + (quarters * 0.25) +
-                        (loonies * 1.00) + (toonies * 2.00) +
-                        (fives * 5.00) + (tens * 10.00) + (twenties * 20.00) +
-                        (fifties * 50.00);
+                (loonies * 1.00) + (toonies * 2.00) + (fives * 5.00) +
+                (tens * 10.00) + (twenties * 20.00) + (fifties * 50.00);
 
             document.getElementById('result').innerHTML = "Total: $" + total.toFixed(2);
         }
